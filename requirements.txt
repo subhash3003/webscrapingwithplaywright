@@ -1,0 +1,10 @@
+playwright
+requests
+beautifulsoup4
+lxml
+pandas
+openpyxl
+python-dotenv
+fake-useragent
+google-genai
+mcp[cli]
