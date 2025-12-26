@@ -60,12 +60,14 @@ WEBSITE CONTENT:
 {raw_text[:4000]}
 """
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
-    )
-
-    data = safe_json_load(response.text)
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
+        data = safe_json_load(response.text)
+    except Exception as e:
+        raise ValueError(f"AI extraction failed: {e}")
 
     allowed_fields = user_fields + ["confidence_score"]
     return enforce_schema(data, allowed_fields)
